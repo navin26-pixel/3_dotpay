@@ -81,14 +81,42 @@ const HeroSection = () => {
 
           {/* Coming Soon Cards */}
           <div className="flex justify-center gap-4 mt-4">
-            {['Japan', 'South Korea', 'Taiwan'].map((country) => (
+            {[
+              { name: 'Japan', flag: '🇯🇵' },
+              { name: 'South Korea', flag: '🇰🇷' },
+              { name: 'Taiwan', flag: '🇹🇼' }
+            ].map((country) => (
               <div
-                key={country}
-                className="w-32 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center"
+                key={country.name}
+                className="w-36 h-20 rounded-xl bg-white/5 border border-white/10 border-dashed flex flex-col items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
               >
-                <span className="text-gray-500 text-sm">Coming Soon</span>
+                <span className="text-xl mb-1">{country.flag}</span>
+                <span className="text-gray-500 text-xs">{country.name}</span>
+                <span className="text-gray-600 text-[10px]">Coming Soon</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-gray-500 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-white/10 flex items-center justify-center">
+              <span className="text-xs">🔒</span>
+            </div>
+            <span>Bank-level Security</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-white/10 flex items-center justify-center">
+              <span className="text-xs">💰</span>
+            </div>
+            <span>1% Cashback</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-white/10 flex items-center justify-center">
+              <span className="text-xs">⚡</span>
+            </div>
+            <span>Instant Payments</span>
           </div>
         </div>
       </div>
