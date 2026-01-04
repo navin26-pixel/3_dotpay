@@ -80,7 +80,7 @@ export const howItWorks = [
 ];
 
 export const qrNetworks = [
-  { id: 1, name: 'QRIS', country: 'Indonesia', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg' },
+  { id: 1, name: 'KHQR', country: 'Cambodia', logo: 'https://www.nbc.org.kh/images/logo/khqr-logo.png' },
   { id: 2, name: 'PromptPay', country: 'Thailand', logo: 'https://www.bot.or.th/content/dam/bot/icons/icon-promptpay.svg' },
   { id: 3, name: 'VietQR', country: 'Vietnam', logo: 'https://vietqr.net/portal-service/portal/default-logo.png' },
   { id: 4, name: 'DuitNow', country: 'Malaysia', logo: 'https://www.duitnow.my/assets/images/logo/duitnow-logo.png' },
