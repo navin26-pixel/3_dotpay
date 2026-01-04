@@ -45,7 +45,7 @@ export const supportedCountries = [
     id: 6,
     name: 'Cambodia',
     flag: '🇰🇭',
-    image: 'https://images.unsplash.com/photo-1569697137280-8a5094e66cb4?w=400&h=500&fit=crop',
+    image: 'https://images.pexels.com/photos/2166608/pexels-photo-2166608.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop',
     currency: 'KHR',
     network: 'KHQR'
   }
