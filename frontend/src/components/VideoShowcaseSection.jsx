@@ -9,14 +9,6 @@ const VideoShowcaseSection = () => {
   const videoId = 'Q9fQ82iEI6M';
   const videoThumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
-  // Array of travel/payment images using reliable sources
-  const images = [
-    { url: 'https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Thailand temple' },
-    { url: 'https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Vietnam street' },
-    { url: 'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Singapore skyline' },
-    { url: 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Malaysia city' },
-  ];
-
   return (
     <section className="py-24 bg-black relative overflow-hidden">
       {/* Background */}
