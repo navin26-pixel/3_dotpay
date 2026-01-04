@@ -64,8 +64,8 @@ const VideoShowcaseSection = () => {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-pointer"
             >
               <img
-                src={img}
-                alt={`Travel scene ${index + 1}`}
+                src={img.url}
+                alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
