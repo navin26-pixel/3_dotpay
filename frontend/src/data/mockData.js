@@ -225,7 +225,7 @@ export const faqs = [
   {
     id: 5,
     question: 'What countries is 3dotpay available in?',
-    answer: 'Currently available in Thailand, Vietnam, Philippines, Singapore, Malaysia, and Indonesia. We are expanding to more countries soon!'
+    answer: 'Currently available in Thailand, Vietnam, Philippines, Singapore, Malaysia, and Cambodia. We are expanding to more countries soon!'
   },
   {
     id: 6,
