@@ -93,37 +93,37 @@ export const rateComparison = [
     provider: '3dotpay',
     supportsQR: true,
     rate: 31.44,
-    fees: -10.00,
+    fees: -5.00,
     feeNote: '1% cashback',
-    spendingPower: 31754.40,
+    spendingPower: 15877.20,
     isCheapest: true
   },
   {
     provider: 'Wise',
     supportsQR: false,
     rate: 31.25,
-    fees: 17.50,
+    fees: 8.75,
     feeNote: '',
-    spendingPower: 30704.46,
-    savings: 1049.94
+    spendingPower: 15351.56,
+    savings: 525.64
   },
   {
     provider: 'Revolut',
     supportsQR: false,
     rate: 31.13,
-    fees: 20.00,
+    fees: 10.00,
     feeNote: '',
-    spendingPower: 30503.09,
-    savings: 1251.31
+    spendingPower: 15253.70,
+    savings: 623.50
   },
   {
     provider: 'Cash ATM',
     supportsQR: false,
     rate: 30.97,
-    fees: 15.90,
+    fees: 7.95,
     feeNote: '',
-    spendingPower: 30468.40,
-    savings: 1286.00
+    spendingPower: 15234.34,
+    savings: 642.86
   }
 ];
 
