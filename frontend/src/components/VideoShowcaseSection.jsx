@@ -4,6 +4,11 @@ import { Play, X } from 'lucide-react';
 const VideoShowcaseSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
+  // YouTube video ID for QR code payment demonstration
+  // Thai QR Payment system demonstration video
+  const videoId = 'Q9fQ82iEI6M';
+  const videoThumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
   // Array of travel/payment images using reliable sources
   const images = [
     { url: 'https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Thailand temple' },
@@ -24,14 +29,16 @@ const VideoShowcaseSection = () => {
             className="relative aspect-video rounded-3xl overflow-hidden cursor-pointer group"
             onClick={() => setIsVideoOpen(true)}
           >
-            {/* Thumbnail */}
-            <div className="w-full h-full bg-gradient-to-br from-teal-900/50 to-cyan-900/50 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-teal-500/30 to-cyan-500/30 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-6xl">📱</span>
-                </div>
-              </div>
-            </div>
+            {/* Video Thumbnail from YouTube */}
+            <img
+              src={videoThumbnail}
+              alt="QR Code Payment Demo"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={(e) => {
+                // Fallback to hqdefault if maxresdefault doesn't exist
+                e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+              }}
+            />
             
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
@@ -47,8 +54,8 @@ const VideoShowcaseSection = () => {
 
             {/* Text Overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-              <h3 className="text-white text-2xl font-semibold mb-2">See 3dotpay in action</h3>
-              <p className="text-gray-300">Watch how easy it is to pay anywhere in Southeast Asia</p>
+              <h3 className="text-white text-2xl font-semibold mb-2">See QR Payment in Action</h3>
+              <p className="text-gray-300">Watch how easy it is to scan and pay with QR codes across Asia</p>
             </div>
           </div>
 
@@ -91,8 +98,8 @@ const VideoShowcaseSection = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="3dotpay Demo"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+              title="QR Code Payment Demo"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
