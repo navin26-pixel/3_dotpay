@@ -69,9 +69,9 @@ const TestimonialsSection = () => {
         {/* Stats Row */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { value: '50K+', label: 'Active Users' },
-            { value: '6', label: 'Countries' },
-            { value: '$2M+', label: 'Transactions' },
+            { value: '1000+', label: 'Beta Users' },
+            { value: '5', label: 'Countries' },
+            { value: '$5M+', label: 'Transactions' },
             { value: '4.9', label: 'App Rating' },
           ].map((stat, index) => (
             <div
