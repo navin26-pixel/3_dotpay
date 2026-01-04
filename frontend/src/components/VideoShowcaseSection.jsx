@@ -25,11 +25,13 @@ const VideoShowcaseSection = () => {
             onClick={() => setIsVideoOpen(true)}
           >
             {/* Thumbnail */}
-            <img
-              src="https://images.unsplash.com/photo-1553073520-6c6b7e892b42?w=1200&h=675&fit=crop"
-              alt="Video thumbnail"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <div className="w-full h-full bg-gradient-to-br from-teal-900/50 to-cyan-900/50 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-teal-500/30 to-cyan-500/30 mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-6xl">📱</span>
+                </div>
+              </div>
+            </div>
             
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
