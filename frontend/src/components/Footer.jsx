@@ -47,9 +47,11 @@ const Footer = () => {
             {/* Brand */}
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
-                  <span className="text-black font-bold text-lg">3.</span>
-                </div>
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_threedotpay/artifacts/2z7vuqp7_3dotpay%20logo.jpeg" 
+                  alt="3dotpay" 
+                  className="h-10 w-auto rounded-lg"
+                />
                 <span className="text-white font-semibold text-xl">3dotpay</span>
               </div>
               <p className="text-gray-400 text-sm mb-6 max-w-xs">
