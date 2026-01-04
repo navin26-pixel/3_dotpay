@@ -5,8 +5,8 @@ const VideoShowcaseSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // YouTube video ID for QR code payment demonstration
-  // Simple short video showing customer scanning merchant QR code
-  const videoId = 'e1PFOUI027A';
+  // Thai QR Payment system demonstration video
+  const videoId = 'Q9fQ82iEI6M';
   const videoThumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   // Array of travel/payment images using reliable sources
