@@ -62,23 +62,6 @@ const VideoShowcaseSection = () => {
           {/* Glow Effect */}
           <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-[2rem] blur-2xl -z-10" />
         </div>
-
-        {/* Image Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {images.map((img, index) => (
-            <div 
-              key={index}
-              className="relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-pointer"
-            >
-              <img
-                src={img.url}
-                alt={img.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Video Modal */}
