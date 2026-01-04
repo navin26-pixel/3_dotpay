@@ -36,9 +36,11 @@ const AppHeader = ({ title, showBack, showNotification }) => (
           <ChevronRight size={16} className="text-white rotate-180" />
         </button>
       ) : (
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
-          <span className="text-black font-bold text-xs">3.</span>
-        </div>
+        <img 
+          src="https://customer-assets.emergentagent.com/job_threedotpay/artifacts/2z7vuqp7_3dotpay%20logo.jpeg" 
+          alt="3dotpay" 
+          className="w-8 h-8 rounded-lg object-cover"
+        />
       )}
       <span className="text-white font-semibold">{title}</span>
     </div>
