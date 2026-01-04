@@ -129,6 +129,24 @@ const HowItWorksSection = () => {
             </div>
             <Check size={16} className="text-teal-400" />
           </div>
+          <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">₮</span>
+            </div>
+            <div className="flex-1">
+              <p className="text-white text-sm font-medium">USDT</p>
+              <p className="text-gray-500 text-xs">Tether USD</p>
+            </div>
+          </div>
+          <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">$</span>
+            </div>
+            <div className="flex-1">
+              <p className="text-white text-sm font-medium">USDC</p>
+              <p className="text-gray-500 text-xs">USD Coin</p>
+            </div>
+          </div>
           <div className="bg-white/5 border border-dashed border-white/20 rounded-xl p-3 flex items-center justify-center gap-2">
             <PlusCircle size={16} className="text-gray-500" />
             <span className="text-gray-500 text-xs">Add Payment Method</span>
