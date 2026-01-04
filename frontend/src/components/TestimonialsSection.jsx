@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
           {[
             { value: '1000+', label: 'Beta Users' },
             { value: '5', label: 'Countries' },
-            { value: '$5M+', label: 'Transactions' },
+            { value: '$5000+', label: 'Transactions' },
             { value: '4.9', label: 'App Rating' },
           ].map((stat, index) => (
             <div
