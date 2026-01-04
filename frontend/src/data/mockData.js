@@ -43,11 +43,11 @@ export const supportedCountries = [
   },
   {
     id: 6,
-    name: 'Indonesia',
-    flag: '🇮🇩',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=500&fit=crop',
-    currency: 'IDR',
-    network: 'QRIS'
+    name: 'Cambodia',
+    flag: '🇰🇭',
+    image: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=400&h=500&fit=crop',
+    currency: 'KHR',
+    network: 'KHQR'
   }
 ];
 
