@@ -1,6 +1,6 @@
 import React from 'react';
 import { securityFeatures } from '../data/mockData';
-import { Shield, UserCheck, Eye, BadgeCheck, Bell, Lock, Quote } from 'lucide-react';
+import { Shield, UserCheck, Eye, BadgeCheck, Bell, Lock } from 'lucide-react';
 
 const iconComponents = {
   Shield,
@@ -18,33 +18,14 @@ const SecuritySection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Quote Section */}
-        <div className="mb-20">
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            {/* Decorative Elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl" />
-            
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center mb-6">
-                <Quote className="w-6 h-6 text-black" />
-              </div>
-              
-              <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-8">
-                "At 3dotpay, your security isn't a feature. It's the foundation. We treat every transaction like it's our own money on the line and every account like it belongs to someone we love."
-              </blockquote>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                  <span className="text-white font-semibold">JK</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">James Kim</p>
-                  <p className="text-gray-400 text-sm">Co-Founder and CTO · 3dotpay</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            YOUR SECURITY IS OUR <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">PRIORITY</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Bank-level protection for every transaction. Your money is always safe with us.
+          </p>
         </div>
 
         {/* Security Features Grid */}
