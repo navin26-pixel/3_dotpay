@@ -4,7 +4,7 @@ import { Check, X, ChevronDown, TrendingUp } from 'lucide-react';
 import { Button } from './ui/button';
 
 const RateComparisonSection = () => {
-  const [amount, setAmount] = useState(1000);
+  const [amount, setAmount] = useState(500);
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('THB');
 
