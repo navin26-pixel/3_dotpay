@@ -1,7 +1,7 @@
 import React from 'react';
 
 const networks = [
-  { name: 'QRIS', country: 'Indonesia' },
+  { name: 'KHQR', country: 'Cambodia' },
   { name: 'PromptPay', country: 'Thailand' },
   { name: 'VietQR', country: 'Vietnam' },
   { name: 'DuitNow', country: 'Malaysia' },
