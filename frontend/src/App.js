@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import VideoShowcaseSection from "./components/VideoShowcaseSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import NetworksMarquee from "./components/NetworksMarquee";
 import RateComparisonSection from "./components/RateComparisonSection";
