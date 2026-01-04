@@ -308,9 +308,11 @@ const HowItWorksSection = () => {
 
         {/* Payment Method */}
         <div className="bg-white/5 rounded-xl p-3 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
-            <Wallet size={18} className="text-black" />
-          </div>
+          <img 
+            src="https://customer-assets.emergentagent.com/job_threedotpay/artifacts/2z7vuqp7_3dotpay%20logo.jpeg" 
+            alt="3dotpay" 
+            className="w-10 h-10 rounded-lg object-cover"
+          />
           <div className="flex-1">
             <p className="text-white text-sm font-medium">3dotpay Balance</p>
             <p className="text-gray-500 text-xs">$1,234.56 available</p>
