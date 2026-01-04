@@ -4,12 +4,12 @@ import { Play, X } from 'lucide-react';
 const VideoShowcaseSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
-  // Array of travel/payment images
+  // Array of travel/payment images using reliable sources
   const images = [
-    'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&h=500&fit=crop',
-    'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=500&fit=crop',
-    'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=400&h=500&fit=crop',
-    'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=500&fit=crop',
+    { url: 'https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Thailand temple' },
+    { url: 'https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Vietnam street' },
+    { url: 'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Singapore skyline' },
+    { url: 'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop', alt: 'Malaysia city' },
   ];
 
   return (
