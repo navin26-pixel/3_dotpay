@@ -100,10 +100,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-            )}
-          </div>
-        </div>
-      </div>
 
       {/* Footer Links */}
       <div className="border-t border-white/10">
