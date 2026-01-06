@@ -1,65 +1,13 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Apple, Play, Twitter, Instagram, Linkedin, MapPin, Globe, ChevronDown, ChevronUp } from 'lucide-react';
+import { Twitter, Instagram, Linkedin, MapPin, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 
 const Footer = () => {
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [showHelpEmail, setShowHelpEmail] = useState(false);
   const [showContactEmail, setShowContactEmail] = useState(false);
-  const [showIOSComingSoon, setShowIOSComingSoon] = useState(false);
-  const [showAndroidComingSoon, setShowAndroidComingSoon] = useState(false);
 
   return (
     <footer className="bg-black relative overflow-hidden">
-      {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="relative bg-gradient-to-br from-teal-500/20 to-cyan-500/20 border border-teal-500/30 rounded-3xl p-12 md:p-16 text-center overflow-hidden">
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl" />
-          
-          <div className="relative z-10">
-            {/* Download Buttons with Coming Soon on Click */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {/* iOS Button */}
-              <div className="flex flex-col items-center">
-                <Button 
-                  type="button"
-                  onClick={() => setShowIOSComingSoon(!showIOSComingSoon)}
-                  className="bg-white text-black hover:bg-gray-100 px-8 py-6 rounded-full text-lg font-semibold flex items-center gap-3 transition-all hover:shadow-xl hover:shadow-white/10"
-                >
-                  <Apple size={24} />
-                  Download for iOS
-                </Button>
-                {showIOSComingSoon && (
-                  <p className="text-teal-400 text-sm mt-2 animate-fadeIn font-medium">
-                    The 3DotPay App is Coming Soon!
-                  </p>
-                )}
-              </div>
-              
-              {/* Android Button */}
-              <div className="flex flex-col items-center">
-                <Button 
-                  type="button"
-                  onClick={() => setShowAndroidComingSoon(!showAndroidComingSoon)}
-                  variant="outline"
-                  className="border-white/30 bg-white/10 text-white hover:bg-white/20 px-8 py-6 rounded-full text-lg flex items-center gap-3"
-                >
-                  <Play size={24} />
-                  Download for Android
-                </Button>
-                {showAndroidComingSoon && (
-                  <p className="text-teal-400 text-sm mt-2 animate-fadeIn font-medium">
-                    The 3DotPay App is Coming Soon!
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Footer Links */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-16">
