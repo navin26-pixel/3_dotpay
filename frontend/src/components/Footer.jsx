@@ -30,36 +30,6 @@ const Footer = () => {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            {/* Email Notification Form */}
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Get Notified When We Launch
-            </h2>
-            
-            <form onSubmit={handleNotify} className="max-w-md mx-auto mb-8">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 outline-none focus:border-teal-500 transition-colors"
-                  required
-                />
-                <Button 
-                  type="submit"
-                  className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-8 py-4 rounded-full flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-teal-500/25"
-                >
-                  <Bell size={20} />
-                  Notify Me
-                </Button>
-              </div>
-              {isSubscribed && (
-                <p className="text-teal-400 text-sm mt-3 animate-fadeIn">
-                  ✓ Thank you! We'll notify you when the app launches.
-                </p>
-              )}
-            </form>
-            
             {/* Download Buttons with Coming Soon on Click */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               {/* iOS Button */}
