@@ -1,10 +1,14 @@
-import React, { useState, useMemo } from 'react';
-import { Check, X, TrendingUp } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Check, X, TrendingUp, RefreshCw, Loader2 } from 'lucide-react';
 
 const RateComparisonSection = () => {
   const [amount, setAmount] = useState(500);
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('THB');
+  const [exchangeRates, setExchangeRates] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [error, setError] = useState(null);
 
   const currencies = [
     { code: 'USD', name: 'US Dollar', flag: '🇺🇸' },
@@ -13,16 +17,72 @@ const RateComparisonSection = () => {
   ];
 
   const destinationCurrencies = [
-    { code: 'THB', name: 'Thai Baht', flag: '🇹🇭' },
-    { code: 'PHP', name: 'Philippine Peso', flag: '🇵🇭' },
-    { code: 'VND', name: 'Vietnamese Dong', flag: '🇻🇳' },
+    { code: 'THB', name: 'Thai Baht', flag: '🇹🇭', symbol: '฿' },
+    { code: 'PHP', name: 'Philippine Peso', flag: '🇵🇭', symbol: '₱' },
+    { code: 'VND', name: 'Vietnamese Dong', flag: '🇻🇳', symbol: '₫' },
+    { code: 'KHR', name: 'Cambodian Riel', flag: '🇰🇭', symbol: '៛' },
+    { code: 'MYR', name: 'Malaysian Ringgit', flag: '🇲🇾', symbol: 'RM' },
+    { code: 'SGD', name: 'Singapore Dollar', flag: '🇸🇬', symbol: 'S$' },
   ];
 
-  // Base market rate (mid-market rate)
-  const baseMarketRate = 31.44;
+  // Fetch exchange rates from API
+  const fetchExchangeRates = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      // Using exchangerate-api.com free tier (no key required for basic usage)
+      const response = await fetch(
+        `https://api.exchangerate-api.com/v4/latest/${fromCurrency}`
+      );
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch exchange rates');
+      }
+      
+      const data = await response.json();
+      setExchangeRates(data.rates);
+      setLastUpdated(new Date().toLocaleTimeString());
+    } catch (err) {
+      console.error('Error fetching rates:', err);
+      setError('Unable to fetch live rates. Using cached rates.');
+      // Fallback rates if API fails
+      setExchangeRates({
+        THB: 33.50,
+        PHP: 56.20,
+        VND: 24500,
+        KHR: 4100,
+        MYR: 4.45,
+        SGD: 1.34,
+        USD: 1,
+        GBP: 0.79,
+        EUR: 0.92
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch rates on component mount and when source currency changes
+  useEffect(() => {
+    fetchExchangeRates();
+    
+    // Auto-refresh every 5 minutes
+    const interval = setInterval(fetchExchangeRates, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [fromCurrency]);
+
+  // Get the base market rate for the selected currency pair
+  const baseMarketRate = exchangeRates[toCurrency] || 0;
   
   // 3% higher rate for 3dotpay
   const rateBoost = 1.03;
+
+  // Get currency symbol
+  const getCurrencySymbol = (code) => {
+    const currency = destinationCurrencies.find(c => c.code === code);
+    return currency?.symbol || code;
+  };
 
   // Provider configurations with base rates and fees
   const providerConfigs = [
@@ -62,8 +122,10 @@ const RateComparisonSection = () => {
 
   // Calculate rates and spending power dynamically
   const rateComparison = useMemo(() => {
+    if (!baseMarketRate) return [];
+
     const calculated = providerConfigs.map(config => {
-      // Round rate to 2 decimal places (last 2 digits become 00)
+      // Round rate to 2 decimal places
       const rate = Math.round(baseMarketRate * config.rateMultiplier * 100) / 100;
       const fees = config.feePercent < 0 
         ? (amount * Math.abs(config.feePercent) / 100) * -1 // Cashback
@@ -72,7 +134,7 @@ const RateComparisonSection = () => {
       // Spending power calculation
       let spendingPower;
       if (config.feePercent < 0) {
-        // For cashback: amount * rate + cashback value in THB
+        // For cashback: amount * rate + cashback value in local currency
         spendingPower = (amount * rate) + (Math.abs(fees) * rate);
       } else {
         // For fees: (amount - fees) * rate
@@ -95,7 +157,7 @@ const RateComparisonSection = () => {
       ...provider,
       savings: provider.isCheapest ? null : maxSpendingPower - provider.spendingPower
     }));
-  }, [amount]);
+  }, [amount, baseMarketRate, toCurrency]);
 
   return (
     <section id="rates" className="py-24 bg-black relative overflow-hidden">
@@ -112,6 +174,28 @@ const RateComparisonSection = () => {
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Get the full picture before you pay with side-by-side rates, fees, and total value.
           </p>
+          
+          {/* Live Rate Indicator */}
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {loading ? (
+              <Loader2 className="w-4 h-4 text-teal-400 animate-spin" />
+            ) : (
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            )}
+            <span className="text-gray-500 text-sm">
+              {loading ? 'Fetching live rates...' : `Live rates • Updated ${lastUpdated}`}
+            </span>
+            <button 
+              onClick={fetchExchangeRates}
+              className="p-1 hover:bg-white/10 rounded-full transition-colors"
+              title="Refresh rates"
+            >
+              <RefreshCw className={`w-4 h-4 text-gray-500 hover:text-teal-400 ${loading ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
+          {error && (
+            <p className="text-yellow-500 text-sm mt-2">{error}</p>
+          )}
         </div>
 
         {/* Currency Selector */}
@@ -163,6 +247,14 @@ const RateComparisonSection = () => {
           </div>
         </div>
 
+        {/* Current Rate Display */}
+        <div className="text-center mb-8">
+          <p className="text-gray-400 text-sm">Mid-market rate</p>
+          <p className="text-white text-2xl font-bold">
+            1 {fromCurrency} = {getCurrencySymbol(toCurrency)}{baseMarketRate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 })} {toCurrency}
+          </p>
+        </div>
+
         {/* Comparison Table */}
         <div className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-sm">
           {/* Table Header */}
@@ -173,6 +265,14 @@ const RateComparisonSection = () => {
             <div className="text-center">Fees</div>
             <div className="text-right">Spending Power</div>
           </div>
+
+          {/* Loading State */}
+          {loading && rateComparison.length === 0 && (
+            <div className="p-8 text-center">
+              <Loader2 className="w-8 h-8 text-teal-400 animate-spin mx-auto mb-4" />
+              <p className="text-gray-400">Loading exchange rates...</p>
+            </div>
+          )}
 
           {/* Table Rows */}
           {rateComparison.map((provider, index) => (
@@ -214,7 +314,9 @@ const RateComparisonSection = () => {
 
               {/* Rate */}
               <div className="text-center">
-                <span className="text-white font-medium">{provider.rate.toFixed(2)}00</span>
+                <span className="text-white font-medium">
+                  {provider.rate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </span>
               </div>
 
               {/* Fees */}
@@ -237,13 +339,13 @@ const RateComparisonSection = () => {
                 <span className={`font-semibold ${
                   provider.isCheapest ? 'text-teal-400' : 'text-white'
                 }`}>
-                  ฿{provider.spendingPower.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  {getCurrencySymbol(toCurrency)}{provider.spendingPower.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
                 {provider.isCheapest ? (
                   <span className="block text-xs text-teal-400 font-medium">Cheapest</span>
                 ) : (
                   <span className="block text-xs text-gray-500">
-                    -{provider.savings?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} THB
+                    -{getCurrencySymbol(toCurrency)}{provider.savings?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 )}
               </div>
@@ -252,7 +354,7 @@ const RateComparisonSection = () => {
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-6">
-          * Rates are indicative and updated in real-time. Actual rates may vary.
+          * Live rates from exchangerate-api.com. 3dotpay offers 3% better rates than mid-market.
         </p>
       </div>
     </section>
