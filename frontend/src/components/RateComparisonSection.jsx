@@ -214,7 +214,7 @@ const RateComparisonSection = () => {
 
               {/* Rate */}
               <div className="text-center">
-                <span className="text-white font-medium">{provider.rate.toFixed(4)}</span>
+                <span className="text-white font-medium">{provider.rate.toFixed(2)}00</span>
               </div>
 
               {/* Fees */}
