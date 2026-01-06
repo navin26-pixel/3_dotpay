@@ -354,7 +354,7 @@ const RateComparisonSection = () => {
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-6">
-          * Live rates from exchangerate-api.com. 3dotpay offers 3% better rates than mid-market.
+          * Live rates from exchangerate-api.com. 3dotpay offers mid-market rates with 1% cashback.
         </p>
       </div>
     </section>
