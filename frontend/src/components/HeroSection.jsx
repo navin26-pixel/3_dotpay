@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Apple, Play, QrCode, ArrowRight } from 'lucide-react';
+import { Apple, Play, ArrowRight } from 'lucide-react';
 import { supportedCountries } from '../data/mockData';
 
 const HeroSection = () => {
+  const [showIOSComingSoon, setShowIOSComingSoon] = useState(false);
+  const [showAndroidComingSoon, setShowAndroidComingSoon] = useState(false);
+
   return (
     <section className="min-h-screen bg-black relative overflow-hidden pt-24">
       {/* Gradient Orbs */}
@@ -26,21 +29,42 @@ const HeroSection = () => {
             Skip the ATM hassle, earn cashback, and avoid high exchange fees.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button 
-              className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-8 py-6 rounded-full text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-500/25 flex items-center gap-3"
-            >
-              <Apple size={24} />
-              Download for iOS
-            </Button>
-            <Button 
-              variant="outline"
-              className="border-white/20 bg-white/5 text-white hover:bg-white/10 px-8 py-6 rounded-full text-lg flex items-center gap-3"
-            >
-              <Play size={24} />
-              Download for Android
-            </Button>
+          {/* CTA Buttons with Coming Soon on Click */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+            {/* iOS Button */}
+            <div className="flex flex-col items-center">
+              <Button 
+                type="button"
+                onClick={() => setShowIOSComingSoon(!showIOSComingSoon)}
+                className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-8 py-6 rounded-full text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-500/25 flex items-center gap-3"
+              >
+                <Apple size={24} />
+                Download for iOS
+              </Button>
+              {showIOSComingSoon && (
+                <p className="text-teal-400 text-sm mt-3 animate-fadeIn font-medium">
+                  The 3DotPay App is Coming Soon!
+                </p>
+              )}
+            </div>
+            
+            {/* Android Button */}
+            <div className="flex flex-col items-center">
+              <Button 
+                type="button"
+                onClick={() => setShowAndroidComingSoon(!showAndroidComingSoon)}
+                variant="outline"
+                className="border-white/20 bg-white/5 text-white hover:bg-white/10 px-8 py-6 rounded-full text-lg flex items-center gap-3"
+              >
+                <Play size={24} />
+                Download for Android
+              </Button>
+              {showAndroidComingSoon && (
+                <p className="text-teal-400 text-sm mt-3 animate-fadeIn font-medium">
+                  The 3DotPay App is Coming Soon!
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
