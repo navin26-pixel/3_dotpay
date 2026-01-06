@@ -87,10 +87,18 @@ const Footer = () => {
 
             {/* Company */}
             <div className="col-span-2 md:col-span-1">
-              <h4 className="text-white font-semibold mb-4">About Us</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                3DotPay is on a mission to make finance more open and inclusive. We connect digital money with traditional payments, allowing deposits into our e-wallet via stablecoins, bank transfers, and cards. This gives people everywhere—especially those who are underserved—real access to the global financial system through simple, practical payment solutions, including conversions to local currency for payments via local QR codes in SE Asia, P2P transfers, and QR code money remittances.
-              </p>
+              <h4 
+                className="text-white font-semibold mb-4 cursor-pointer flex items-center gap-2 hover:text-teal-400 transition-colors select-none"
+                onDoubleClick={() => setShowAboutUs(!showAboutUs)}
+              >
+                About Us
+                <ChevronDown size={16} className={`transition-transform ${showAboutUs ? 'rotate-180' : ''}`} />
+              </h4>
+              {showAboutUs && (
+                <p className="text-gray-400 text-sm leading-relaxed animate-fadeIn">
+                  3DotPay is on a mission to make finance more open and inclusive. We connect digital money with traditional payments, allowing deposits into our e-wallet via stablecoins, bank transfers, and cards. This gives people everywhere—especially those who are underserved—real access to the global financial system through simple, practical payment solutions, including conversions to local currency for payments via local QR codes in SE Asia, P2P transfers, and QR code money remittances.
+                </p>
+              )}
             </div>
 
             {/* Support */}
@@ -98,12 +106,26 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Help Center</a>
-                  <a href="mailto:Support@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm">Support@3dotpay.com</a>
+                  <span 
+                    className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer select-none"
+                    onDoubleClick={() => setShowHelpEmail(!showHelpEmail)}
+                  >
+                    Help Center
+                  </span>
+                  {showHelpEmail && (
+                    <a href="mailto:Support@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn">Support@3dotpay.com</a>
+                  )}
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a>
-                  <a href="mailto:contact@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm">contact@3dotpay.com</a>
+                  <span 
+                    className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer select-none"
+                    onDoubleClick={() => setShowContactEmail(!showContactEmail)}
+                  >
+                    Contact Us
+                  </span>
+                  {showContactEmail && (
+                    <a href="mailto:contact@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn">contact@3dotpay.com</a>
+                  )}
                 </li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a></li>
