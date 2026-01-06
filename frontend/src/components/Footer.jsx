@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown, ChevronUp, Bell } from 'lucide-react';
+import { Apple, Play, Twitter, Instagram, Linkedin, MapPin, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 
 const Footer = () => {
   const [showAboutUs, setShowAboutUs] = useState(false);
@@ -8,17 +8,6 @@ const Footer = () => {
   const [showContactEmail, setShowContactEmail] = useState(false);
   const [showIOSComingSoon, setShowIOSComingSoon] = useState(false);
   const [showAndroidComingSoon, setShowAndroidComingSoon] = useState(false);
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const handleNotify = (e) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setTimeout(() => setIsSubscribed(false), 3000);
-      setEmail('');
-    }
-  };
 
   return (
     <footer className="bg-black relative overflow-hidden">
