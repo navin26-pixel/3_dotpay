@@ -89,7 +89,7 @@ const RateComparisonSection = () => {
     {
       provider: '3dotpay',
       supportsQR: true,
-      rateMultiplier: rateBoost, // 3% better than market
+      rateMultiplier: 1.0, // Mid-market rate
       feePercent: -1, // 1% cashback (negative fee)
       feeNote: '1% cashback',
       isCheapest: true
