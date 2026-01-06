@@ -11,10 +11,10 @@ const TestimonialsSection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            OUR COMMUNITY <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">SPEAKS</span>
+            Voices from Our <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">Community</span>
           </h2>
           <p className="text-gray-400 text-lg">
-            Hear from influencers and fellow travelers about their favorite 3dotpay features.
+            Listen to influencers and fellow travelers as they share their favorite features of 3DotPay
           </p>
         </div>
 
