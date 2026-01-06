@@ -6,8 +6,8 @@ const Footer = () => {
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [showHelpEmail, setShowHelpEmail] = useState(false);
   const [showContactEmail, setShowContactEmail] = useState(false);
-  const [showComingSoon, setShowComingSoon] = useState(false);
-  const [showDownloadButtons, setShowDownloadButtons] = useState(false);
+  const [showIOSComingSoon, setShowIOSComingSoon] = useState(false);
+  const [showAndroidComingSoon, setShowAndroidComingSoon] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -30,23 +30,11 @@ const Footer = () => {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            {/* Coming Soon Title - Click to toggle description */}
-            <button 
-              type="button"
-              className="text-4xl md:text-5xl font-bold text-white mb-6 cursor-pointer select-none hover:text-teal-400 transition-colors flex items-center justify-center gap-3 mx-auto"
-              onClick={() => setShowComingSoon(!showComingSoon)}
-            >
-              The 3DotPay App is Coming Soon!
-              {showComingSoon ? <ChevronUp size={32} /> : <ChevronDown size={32} />}
-            </button>
-            
-            {showComingSoon && (
-              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto animate-fadeIn">
-                Revolutionary payments in SE Asia – deposit with stablecoin, cards, or bank transfers. Pay seamlessly with local QR codes, P2P, and remittances.
-              </p>
-            )}
-
             {/* Email Notification Form */}
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Get Notified When We Launch
+            </h2>
+            
             <form onSubmit={handleNotify} className="max-w-md mx-auto mb-8">
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
@@ -72,32 +60,46 @@ const Footer = () => {
               )}
             </form>
             
-            {/* Download Buttons - Click to toggle */}
-            <button 
-              type="button"
-              className="text-gray-400 text-sm cursor-pointer select-none hover:text-teal-400 transition-colors mb-4 flex items-center justify-center gap-2 mx-auto"
-              onClick={() => setShowDownloadButtons(!showDownloadButtons)}
-            >
-              {showDownloadButtons ? 'Hide download options' : 'Click for download options'}
-              {showDownloadButtons ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </button>
-            
-            {showDownloadButtons && (
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn">
+            {/* Download Buttons with Coming Soon on Click */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {/* iOS Button */}
+              <div className="flex flex-col items-center">
                 <Button 
+                  type="button"
+                  onClick={() => setShowIOSComingSoon(!showIOSComingSoon)}
                   className="bg-white text-black hover:bg-gray-100 px-8 py-6 rounded-full text-lg font-semibold flex items-center gap-3 transition-all hover:shadow-xl hover:shadow-white/10"
                 >
                   <Apple size={24} />
                   Download for iOS
                 </Button>
+                {showIOSComingSoon && (
+                  <p className="text-teal-400 text-sm mt-2 animate-fadeIn font-medium">
+                    The 3DotPay App is Coming Soon!
+                  </p>
+                )}
+              </div>
+              
+              {/* Android Button */}
+              <div className="flex flex-col items-center">
                 <Button 
+                  type="button"
+                  onClick={() => setShowAndroidComingSoon(!showAndroidComingSoon)}
                   variant="outline"
                   className="border-white/30 bg-white/10 text-white hover:bg-white/20 px-8 py-6 rounded-full text-lg flex items-center gap-3"
                 >
                   <Play size={24} />
                   Download for Android
                 </Button>
+                {showAndroidComingSoon && (
+                  <p className="text-teal-400 text-sm mt-2 animate-fadeIn font-medium">
+                    The 3DotPay App is Coming Soon!
+                  </p>
+                )}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
             )}
           </div>
         </div>
