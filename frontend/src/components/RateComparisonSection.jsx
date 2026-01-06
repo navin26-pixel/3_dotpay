@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { rateComparison } from '../data/mockData';
-import { Check, X, ChevronDown, TrendingUp } from 'lucide-react';
-import { Button } from './ui/button';
+import React, { useState, useMemo } from 'react';
+import { Check, X, TrendingUp } from 'lucide-react';
 
 const RateComparisonSection = () => {
   const [amount, setAmount] = useState(500);
@@ -19,6 +17,84 @@ const RateComparisonSection = () => {
     { code: 'PHP', name: 'Philippine Peso', flag: '🇵🇭' },
     { code: 'VND', name: 'Vietnamese Dong', flag: '🇻🇳' },
   ];
+
+  // Base market rate (mid-market rate)
+  const baseMarketRate = 31.44;
+  
+  // 3% higher rate for 3dotpay
+  const rateBoost = 1.03;
+
+  // Provider configurations with base rates and fees
+  const providerConfigs = [
+    {
+      provider: '3dotpay',
+      supportsQR: true,
+      rateMultiplier: rateBoost, // 3% better than market
+      feePercent: -1, // 1% cashback (negative fee)
+      feeNote: '1% cashback',
+      isCheapest: true
+    },
+    {
+      provider: 'Wise',
+      supportsQR: false,
+      rateMultiplier: 0.994, // Slightly below market
+      feePercent: 1.75, // 1.75% fee
+      feeNote: '',
+      isCheapest: false
+    },
+    {
+      provider: 'Revolut',
+      supportsQR: false,
+      rateMultiplier: 0.990, // Below market
+      feePercent: 2.0, // 2% fee
+      feeNote: '',
+      isCheapest: false
+    },
+    {
+      provider: 'Cash ATM',
+      supportsQR: false,
+      rateMultiplier: 0.985, // Worst rate
+      feePercent: 1.59, // ATM fees
+      feeNote: '',
+      isCheapest: false
+    }
+  ];
+
+  // Calculate rates and spending power dynamically
+  const rateComparison = useMemo(() => {
+    const calculated = providerConfigs.map(config => {
+      const rate = baseMarketRate * config.rateMultiplier;
+      const fees = config.feePercent < 0 
+        ? (amount * Math.abs(config.feePercent) / 100) * -1 // Cashback
+        : amount * config.feePercent / 100; // Fee
+      
+      // Spending power calculation
+      let spendingPower;
+      if (config.feePercent < 0) {
+        // For cashback: amount * rate + cashback value in THB
+        spendingPower = (amount * rate) + (Math.abs(fees) * rate);
+      } else {
+        // For fees: (amount - fees) * rate
+        spendingPower = (amount - fees) * rate;
+      }
+
+      return {
+        ...config,
+        rate,
+        fees,
+        spendingPower
+      };
+    });
+
+    // Find the highest spending power (3dotpay)
+    const maxSpendingPower = Math.max(...calculated.map(p => p.spendingPower));
+
+    // Calculate savings for each provider
+    return calculated.map(provider => ({
+      ...provider,
+      savings: provider.isCheapest ? null : maxSpendingPower - provider.spendingPower
+    }));
+  }, [amount]);
 
   return (
     <section id="rates" className="py-24 bg-black relative overflow-hidden">
@@ -46,7 +122,7 @@ const RateComparisonSection = () => {
               <input
                 type="number"
                 value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
+                onChange={(e) => setAmount(Number(e.target.value) || 0)}
                 className="w-24 bg-transparent text-white text-xl font-semibold outline-none"
               />
               <select
@@ -145,7 +221,10 @@ const RateComparisonSection = () => {
                 <span className={`font-medium ${
                   provider.fees < 0 ? 'text-teal-400' : 'text-white'
                 }`}>
-                  {provider.fees > 0 ? `$${provider.fees.toFixed(2)}` : `-$${Math.abs(provider.fees).toFixed(2)}`}
+                  {provider.fees < 0 
+                    ? `-$${Math.abs(provider.fees).toFixed(2)}` 
+                    : `$${provider.fees.toFixed(2)}`
+                  }
                 </span>
                 {provider.feeNote && (
                   <span className="block text-xs text-gray-500">{provider.feeNote}</span>
@@ -157,13 +236,13 @@ const RateComparisonSection = () => {
                 <span className={`font-semibold ${
                   provider.isCheapest ? 'text-teal-400' : 'text-white'
                 }`}>
-                  ฿{provider.spendingPower.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                  ฿{provider.spendingPower.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
                 {provider.isCheapest ? (
                   <span className="block text-xs text-teal-400 font-medium">Cheapest</span>
                 ) : (
                   <span className="block text-xs text-gray-500">
-                    -{provider.savings?.toLocaleString('en-US', { minimumFractionDigits: 2 })} THB
+                    -{provider.savings?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} THB
                   </span>
                 )}
               </div>
