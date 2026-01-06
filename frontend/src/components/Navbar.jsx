@@ -163,11 +163,13 @@ const Navbar = () => {
               <a href="#faq" className="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>
                 FAQ
               </a>
-              <Button 
-                className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-6 py-2 rounded-full w-full mt-2"
-              >
-                Get the App
-              </Button>
+              <a href="#download-app" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button 
+                  className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-6 py-2 rounded-full w-full mt-2"
+                >
+                  Get the App
+                </Button>
+              </a>
             </div>
           </div>
         )}
