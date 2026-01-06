@@ -82,14 +82,11 @@ const Footer = () => {
             </div>
 
             {/* Company */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Press</a></li>
-              </ul>
+            <div className="col-span-2 md:col-span-1">
+              <h4 className="text-white font-semibold mb-4">About Us</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                3DotPay is on a mission to make finance more open and inclusive. We connect digital money with traditional payments, allowing deposits into our e-wallet via stablecoins, bank transfers, and cards. This gives people everywhere—especially those who are underserved—real access to the global financial system through simple, practical payment solutions, including conversions to local currency for payments via local QR codes in SE Asia, P2P transfers, and QR code money remittances.
+              </p>
             </div>
 
             {/* Support */}
