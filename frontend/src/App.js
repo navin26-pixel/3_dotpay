@@ -8,6 +8,7 @@ import HowItWorksSection from "./components/HowItWorksSection";
 import NetworksMarquee from "./components/NetworksMarquee";
 import RateComparisonSection from "./components/RateComparisonSection";
 import SecuritySection from "./components/SecuritySection";
+import AboutSection from "./components/AboutSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
@@ -22,6 +23,7 @@ const HomePage = () => {
       <NetworksMarquee />
       <RateComparisonSection />
       <SecuritySection />
+      <AboutSection />
       <TestimonialsSection />
       <FAQSection />
       <Footer />
