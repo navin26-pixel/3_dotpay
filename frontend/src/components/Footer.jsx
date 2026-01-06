@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown } from 'lucide-react';
+import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown, Bell } from 'lucide-react';
 
 const Footer = () => {
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [showHelpEmail, setShowHelpEmail] = useState(false);
   const [showContactEmail, setShowContactEmail] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [showDownloadButtons, setShowDownloadButtons] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleNotify = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setTimeout(() => setIsSubscribed(false), 3000);
+      setEmail('');
+    }
+  };
 
   return (
     <footer className="bg-black relative overflow-hidden">
@@ -17,29 +30,71 @@ const Footer = () => {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Start paying like a local today
+            {/* Coming Soon Title - Hidden by default, double-click to show */}
+            <h2 
+              className="text-4xl md:text-5xl font-bold text-white mb-6 cursor-pointer select-none"
+              onDoubleClick={() => setShowComingSoon(!showComingSoon)}
+            >
+              The 3DotPay App is Coming Soon!
             </h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-              Download 3dotpay and experience seamless QR payments across Southeast Asia.
-              No more cash, no more hassle.
+            
+            {showComingSoon && (
+              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto animate-fadeIn">
+                Revolutionary payments in SE Asia – deposit with stablecoin, cards, or bank transfers. Pay seamlessly with local QR codes, P2P, and remittances.
+              </p>
+            )}
+
+            {/* Email Notification Form */}
+            <form onSubmit={handleNotify} className="max-w-md mx-auto mb-8">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 outline-none focus:border-teal-500 transition-colors"
+                  required
+                />
+                <Button 
+                  type="submit"
+                  className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-8 py-4 rounded-full flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-teal-500/25"
+                >
+                  <Bell size={20} />
+                  Notify Me
+                </Button>
+              </div>
+              {isSubscribed && (
+                <p className="text-teal-400 text-sm mt-3 animate-fadeIn">
+                  ✓ Thank you! We'll notify you when the app launches.
+                </p>
+              )}
+            </form>
+            
+            {/* Download Buttons - Hidden by default, double-click to show */}
+            <p 
+              className="text-gray-400 text-sm cursor-pointer select-none hover:text-white transition-colors mb-4"
+              onDoubleClick={() => setShowDownloadButtons(!showDownloadButtons)}
+            >
+              {showDownloadButtons ? 'Hide download options' : 'Double-click for download options'}
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
-                className="bg-white text-black hover:bg-gray-100 px-8 py-6 rounded-full text-lg font-semibold flex items-center gap-3 transition-all hover:shadow-xl hover:shadow-white/10"
-              >
-                <Apple size={24} />
-                Download for iOS
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-white/30 bg-white/10 text-white hover:bg-white/20 px-8 py-6 rounded-full text-lg flex items-center gap-3"
-              >
-                <Play size={24} />
-                Download for Android
-              </Button>
-            </div>
+            {showDownloadButtons && (
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn">
+                <Button 
+                  className="bg-white text-black hover:bg-gray-100 px-8 py-6 rounded-full text-lg font-semibold flex items-center gap-3 transition-all hover:shadow-xl hover:shadow-white/10"
+                >
+                  <Apple size={24} />
+                  Download for iOS
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="border-white/30 bg-white/10 text-white hover:bg-white/20 px-8 py-6 rounded-full text-lg flex items-center gap-3"
+                >
+                  <Play size={24} />
+                  Download for Android
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
