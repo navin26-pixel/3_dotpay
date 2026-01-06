@@ -10,12 +10,6 @@ const AboutSection = () => {
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            ABOUT <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">3DOTPAY</span>
-          </h2>
-        </div>
-
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
