@@ -63,7 +63,8 @@ const RateComparisonSection = () => {
   // Calculate rates and spending power dynamically
   const rateComparison = useMemo(() => {
     const calculated = providerConfigs.map(config => {
-      const rate = baseMarketRate * config.rateMultiplier;
+      // Round rate to 2 decimal places (last 2 digits become 00)
+      const rate = Math.round(baseMarketRate * config.rateMultiplier * 100) / 100;
       const fees = config.feePercent < 0 
         ? (amount * Math.abs(config.feePercent) / 100) * -1 // Cashback
         : amount * config.feePercent / 100; // Fee
