@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown, Bell } from 'lucide-react';
+import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown, ChevronUp, Bell } from 'lucide-react';
 
 const Footer = () => {
   const [showAboutUs, setShowAboutUs] = useState(false);
@@ -30,13 +30,15 @@ const Footer = () => {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            {/* Coming Soon Title - Hidden by default, double-click to show */}
-            <h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-6 cursor-pointer select-none"
-              onDoubleClick={() => setShowComingSoon(!showComingSoon)}
+            {/* Coming Soon Title - Click to toggle description */}
+            <button 
+              type="button"
+              className="text-4xl md:text-5xl font-bold text-white mb-6 cursor-pointer select-none hover:text-teal-400 transition-colors flex items-center justify-center gap-3 mx-auto"
+              onClick={() => setShowComingSoon(!showComingSoon)}
             >
               The 3DotPay App is Coming Soon!
-            </h2>
+              {showComingSoon ? <ChevronUp size={32} /> : <ChevronDown size={32} />}
+            </button>
             
             {showComingSoon && (
               <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto animate-fadeIn">
@@ -70,13 +72,15 @@ const Footer = () => {
               )}
             </form>
             
-            {/* Download Buttons - Hidden by default, double-click to show */}
-            <p 
-              className="text-gray-400 text-sm cursor-pointer select-none hover:text-white transition-colors mb-4"
-              onDoubleClick={() => setShowDownloadButtons(!showDownloadButtons)}
+            {/* Download Buttons - Click to toggle */}
+            <button 
+              type="button"
+              className="text-gray-400 text-sm cursor-pointer select-none hover:text-teal-400 transition-colors mb-4 flex items-center justify-center gap-2 mx-auto"
+              onClick={() => setShowDownloadButtons(!showDownloadButtons)}
             >
-              {showDownloadButtons ? 'Hide download options' : 'Double-click for download options'}
-            </p>
+              {showDownloadButtons ? 'Hide download options' : 'Click for download options'}
+              {showDownloadButtons ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
             
             {showDownloadButtons && (
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn">
