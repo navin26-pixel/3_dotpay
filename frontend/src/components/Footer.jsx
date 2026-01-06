@@ -146,13 +146,14 @@ const Footer = () => {
 
             {/* Company */}
             <div className="col-span-2 md:col-span-1">
-              <h4 
+              <button 
+                type="button"
                 className="text-white font-semibold mb-4 cursor-pointer flex items-center gap-2 hover:text-teal-400 transition-colors select-none"
-                onDoubleClick={() => setShowAboutUs(!showAboutUs)}
+                onClick={() => setShowAboutUs(!showAboutUs)}
               >
                 About Us
-                <ChevronDown size={16} className={`transition-transform ${showAboutUs ? 'rotate-180' : ''}`} />
-              </h4>
+                {showAboutUs ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
               {showAboutUs && (
                 <p className="text-gray-400 text-sm leading-relaxed animate-fadeIn">
                   3DotPay is on a mission to make finance more open and inclusive. We connect digital money with traditional payments, allowing deposits into our e-wallet via stablecoins, bank transfers, and cards. This gives people everywhere—especially those who are underserved—real access to the global financial system through simple, practical payment solutions, including conversions to local currency for payments via local QR codes in SE Asia, P2P transfers, and QR code money remittances.
@@ -165,25 +166,29 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <ul className="space-y-3">
                 <li>
-                  <span 
-                    className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer select-none"
-                    onDoubleClick={() => setShowHelpEmail(!showHelpEmail)}
+                  <button 
+                    type="button"
+                    className="text-gray-400 hover:text-teal-400 transition-colors text-sm cursor-pointer select-none flex items-center gap-1"
+                    onClick={() => setShowHelpEmail(!showHelpEmail)}
                   >
                     Help Center
-                  </span>
+                    {showHelpEmail ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  </button>
                   {showHelpEmail && (
-                    <a href="mailto:Support@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn">Support@3dotpay.com</a>
+                    <a href="mailto:Support@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn mt-1">Support@3dotpay.com</a>
                   )}
                 </li>
                 <li>
-                  <span 
-                    className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer select-none"
-                    onDoubleClick={() => setShowContactEmail(!showContactEmail)}
+                  <button 
+                    type="button"
+                    className="text-gray-400 hover:text-teal-400 transition-colors text-sm cursor-pointer select-none flex items-center gap-1"
+                    onClick={() => setShowContactEmail(!showContactEmail)}
                   >
                     Contact Us
-                  </span>
+                    {showContactEmail ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  </button>
                   {showContactEmail && (
-                    <a href="mailto:contact@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn">contact@3dotpay.com</a>
+                    <a href="mailto:contact@3dotpay.com" className="block text-teal-400 hover:text-teal-300 transition-colors text-sm animate-fadeIn mt-1">contact@3dotpay.com</a>
                   )}
                 </li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
