@@ -101,11 +101,13 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button 
-              className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/25"
-            >
-              Get the App
-            </Button>
+            <a href="#download-app">
+              <Button 
+                className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-black font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/25"
+              >
+                Get the App
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
