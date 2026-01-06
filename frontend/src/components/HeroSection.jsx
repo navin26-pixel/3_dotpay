@@ -30,7 +30,7 @@ const HeroSection = () => {
           </p>
 
           {/* CTA Buttons with Coming Soon on Click */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+          <div id="download-app" className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             {/* iOS Button */}
             <div className="flex flex-col items-center">
               <Button 
