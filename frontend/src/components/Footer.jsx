@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe } from 'lucide-react';
+import { Apple, Play, Twitter, Instagram, Linkedin, Mail, MapPin, Globe, ChevronDown } from 'lucide-react';
 
 const Footer = () => {
+  const [showAboutUs, setShowAboutUs] = useState(false);
+  const [showHelpEmail, setShowHelpEmail] = useState(false);
+  const [showContactEmail, setShowContactEmail] = useState(false);
+
   return (
     <footer className="bg-black relative overflow-hidden">
       {/* CTA Section */}
