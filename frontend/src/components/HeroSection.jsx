@@ -96,11 +96,13 @@ const HeroSection = () => {
           </div>
 
           {/* Coming Soon Cards */}
-          <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center gap-4 mt-4 flex-wrap">
             {[
               { name: 'Japan', flag: '🇯🇵' },
               { name: 'South Korea', flag: '🇰🇷' },
-              { name: 'Taiwan', flag: '🇹🇼' }
+              { name: 'Taiwan', flag: '🇹🇼' },
+              { name: 'Indonesia', flag: '🇮🇩' },
+              { name: 'China', flag: '🇨🇳' }
             ].map((country) => (
               <div
                 key={country.name}
