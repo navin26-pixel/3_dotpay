@@ -1,6 +1,6 @@
 import React from 'react';
 import { testimonials } from '../data/mockData';
-import { Instagram, ExternalLink } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 const TestimonialsSection = () => {
   return (
@@ -18,50 +18,37 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Testimonial Cards */}
+        {/* Testimonial Cards - Text Only */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-2"
+              className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-2 hover:bg-white/10"
             >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                
-                {/* Instagram Badge */}
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Instagram className="w-5 h-5 text-white" />
+              {/* Quote Icon */}
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
+                <Quote className="w-5 h-5 text-teal-400" />
+              </div>
+
+              {/* Quote */}
+              <p className="text-gray-300 text-sm mb-6 leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+
+              {/* Author */}
+              <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                <div>
+                  <p className="text-white font-semibold text-sm">{testimonial.name}</p>
+                  <p className="text-teal-400 text-xs">{testimonial.handle}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs">{testimonial.followers}</p>
+                  <p className="text-gray-600 text-xs">followers</p>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6 relative">
-                {/* Quote */}
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-3">
-                  "{testimonial.quote}"
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-white font-semibold text-sm">{testimonial.name}</p>
-                    <p className="text-teal-400 text-xs">{testimonial.handle}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-gray-500 text-xs">{testimonial.followers}</p>
-                    <p className="text-gray-600 text-xs">followers</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              {/* Hover Glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </div>
           ))}
         </div>
