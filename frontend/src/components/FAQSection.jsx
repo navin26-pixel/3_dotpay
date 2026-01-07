@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { faqs } from '../data/mockData';
-import { ChevronDown, Plus, Minus } from 'lucide-react';
+import { ChevronDown, ChevronUp, Mail } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +9,8 @@ import {
 } from './ui/accordion';
 
 const FAQSection = () => {
+  const [showSupportEmail, setShowSupportEmail] = useState(false);
+
   return (
     <section id="faq" className="py-24 bg-black relative overflow-hidden">
       {/* Background */}
@@ -49,9 +51,26 @@ const FAQSection = () => {
         {/* More Questions CTA */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-4">Still have questions?</p>
-          <button className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-colors">
+          <button 
+            onClick={() => setShowSupportEmail(!showSupportEmail)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-colors"
+          >
+            <Mail size={18} />
             Contact Support
+            {showSupportEmail ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
+          
+          {showSupportEmail && (
+            <div className="mt-4 animate-fadeIn">
+              <a 
+                href="mailto:support@3dotpay.com" 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 border border-teal-500/30 rounded-full text-teal-400 font-medium hover:from-teal-500/30 hover:to-cyan-500/30 transition-all"
+              >
+                <Mail size={18} />
+                support@3dotpay.com
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>
